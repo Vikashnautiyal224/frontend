@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import twitterImage from "../assets/twitter.png";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import auth from "../firebase.init";
-const Login = () => {
+const Signup = () => {
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [error, setError] = useState("");
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
   if (user) {
     console.log(user);
   }
@@ -19,14 +21,13 @@ const Login = () => {
   if (loading) {
     console.log("loading....");
   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, password);
-    signInWithEmailAndPassword(email, password);
+    createUserWithEmailAndPassword(email, password);
   };
   return (
-    <div className="login-container">
+    <div className="signup-container">
       <div className="image-container">
         <img src={twitterImage} alt="" />
       </div>
@@ -34,6 +35,18 @@ const Login = () => {
         <TwitterIcon />
         <h2>Happenin now</h2>
         <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="display-name"
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="text"
+            className="display-name"
+            placeholder="Enter full name"
+            onChange={(e) => setName(e.target.value)}
+          />
           <input
             type="email"
             className="email"
@@ -48,7 +61,7 @@ const Login = () => {
           />
           <div className="btn-login">
             <button type="submit" className="btn">
-              Login
+              Signup
             </button>
           </div>
         </form>
@@ -56,4 +69,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Signup;
