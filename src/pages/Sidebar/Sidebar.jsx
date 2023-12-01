@@ -21,8 +21,10 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
+
+import { CustomLink } from "./CustomLink";
 // import ListItemIcon from '@mui/icons-material/ListItemIcon ';
-export const Sidebar = ({handleLogout,user }) => {
+export const Sidebar = ({ handleLogout, user }) => {
   const [anchorE1, setAnchorE1] = useState(null);
 
   const openMenu = Boolean(anchorE1);
@@ -37,14 +39,31 @@ export const Sidebar = ({handleLogout,user }) => {
   return (
     <div className="sidebar">
       <TwitterIcon className="sidebar_twitterIcon" />
-      <SidebarOptions active Icon={HomeIcon} text="Home" />
-      <SidebarOptions active Icon={SearchIcon} text="Explore" />
-      <SidebarOptions active Icon={NotificationsIcon} text="Notifications" />
-      <SidebarOptions active Icon={MailOutlineIcon} text="Messages" />
-      <SidebarOptions active Icon={BookmarkBorderIcon} text="Bookmarks" />
-      <SidebarOptions active Icon={ListAltIcon} text="Lists" />
-      <SidebarOptions active Icon={PermIdentityIcon} text="Profile" />
-      <SidebarOptions active Icon={MoreIcon} text="More" />
+      <CustomLink to="/home/feed">
+        <SidebarOptions active Icon={HomeIcon} text="Home" />
+      </CustomLink>
+      <CustomLink to="/home/explore">
+        <SidebarOptions active Icon={SearchIcon} text="Explore" />
+      </CustomLink>
+      <CustomLink to="/home/notifications">
+        <SidebarOptions active Icon={NotificationsIcon} text="Notifications" />
+      </CustomLink>
+      <CustomLink to="/home/messages">
+        <SidebarOptions active Icon={MailOutlineIcon} text="Messages" />
+      </CustomLink>
+      <CustomLink to="/home/bookmarks">
+        <SidebarOptions active Icon={BookmarkBorderIcon} text="Bookmarks" />
+      </CustomLink>
+
+      <CustomLink to="/home/lists">
+        <SidebarOptions active Icon={ListAltIcon} text="Lists" />
+      </CustomLink>
+      <CustomLink to="/home/profile">
+        <SidebarOptions active Icon={PermIdentityIcon} text="Profile" />
+      </CustomLink>
+      <CustomLink to="/home/more">
+        <SidebarOptions active Icon={MoreIcon} text="More" />
+      </CustomLink>
 
       <Button variant="outlined" className="sidebar_tweet">
         Tweet
@@ -84,7 +103,7 @@ export const Sidebar = ({handleLogout,user }) => {
               </ListItemIcon>
             </div>
           </MenuItem>
-          <Divider/>
+          <Divider />
           <MenuItem onClick={handleClose}>Add an existing account</MenuItem>
           <MenuItem onClick={handleLogout}>Log out @vikash</MenuItem>
         </Menu>
