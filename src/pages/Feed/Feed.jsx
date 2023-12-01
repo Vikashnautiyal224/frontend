@@ -3,8 +3,13 @@ import './Feed.css';
 import { TweetBox } from './Tweetbox/TweetBox';
 export const Feed = () => {
   return (
-    <div>
-      <TweetBox/> 
+    <div className="feed">
+    <div className="feed_header">
+        <h2>Home</h2>
     </div>
+    <TweetBox />
+   
+</div>
+
   )
 }

@@ -24,7 +24,7 @@
   border: none;
   padding: 5px 20px;
   }
-  .imageIcon_tweetButton{
+  .imageICon_tweetButton{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +40,7 @@
     height: 40px !important;
   }
   .imageIcon{
-    color: var(--twitter-background);
+    color: var(--twitter-color);
     padding-left: 25px;
   }
   .imageInput{
