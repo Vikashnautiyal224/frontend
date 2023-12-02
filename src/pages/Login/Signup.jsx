@@ -9,6 +9,7 @@ import auth from "../../firebase.init";
 import GoogleButton from "react-google-button";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import axios from "axios";
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -34,8 +35,13 @@ const Signup = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
     createUserWithEmailAndPassword(email, password);
+    const user = {
+      username: username,
+      name: name,
+      email: email,
+    };
+    axios.post(`http://localhost:5000/register`, user);
   };
   const handleGoogleSignIn = () => {
     signInWithGoogle();
@@ -81,32 +87,31 @@ const Signup = () => {
               </button>
             </div>
           </form>
-          </div>
-          <hr />
-          <div className="google-button">
-            <GoogleButton
-              className="g-btn"
-              type="light" // can be light or dark
-              onClick={handleGoogleSignIn}
-            />
-          </div>
-          <div>
-            Alerdy have an account?
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: "skyblue",
-                fontWeight: "600",
-                marginLeft: "5px",
-              }}
-            >
-              Login
-            </Link>
-          </div>
+        </div>
+        <hr />
+        <div className="google-button">
+          <GoogleButton
+            className="g-btn"
+            type="light" // can be light or dark
+            onClick={handleGoogleSignIn}
+          />
+        </div>
+        <div>
+          Alerdy have an account?
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              color: "skyblue",
+              fontWeight: "600",
+              marginLeft: "5px",
+            }}
+          >
+            Login
+          </Link>
         </div>
       </div>
-  
+    </div>
   );
 };
 export default Signup;
