@@ -64,7 +64,9 @@ export const TweetBox = () => {
         name: name,
         email: email,
       };
-      console.log(userPost);
+      // console.log(userPost);
+      setPost('');
+      setImageURL('');
       fetch(`http://localhost:5000/post`, {
         method: "POST",
         headers: {
@@ -93,6 +95,8 @@ export const TweetBox = () => {
             type="text"
             placeholder="What's happening"
             onChange={(e) => setPost(e.target.value)}
+            value={post}
+            required
           />
         </div>
         <div className="imageICon_tweetButton">
