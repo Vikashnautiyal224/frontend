@@ -23,11 +23,16 @@ import {
 } from "@mui/material";
 
 import { CustomLink } from "./CustomLink";
+import { useLoggedInUser } from "../../hooks/useLoggedInUser";
 // import ListItemIcon from '@mui/icons-material/ListItemIcon ';
 export const Sidebar = ({ handleLogout, user }) => {
   const [anchorE1, setAnchorE1] = useState(null);
 
   const openMenu = Boolean(anchorE1);
+  const [loggedInUser] = useLoggedInUser();
+  const userProfilePic = loggedInUser[0]?.profileImage
+    ? loggedInUser[0]?.profileImage
+    : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
 
   const handleClick = (e) => {
     setAnchorE1(e.currentTarget);
@@ -36,6 +41,7 @@ export const Sidebar = ({ handleLogout, user }) => {
     setAnchorE1(null);
   };
 
+  const result = user[0]?.email?.split("@")[0];
   return (
     <div className="sidebar">
       <TwitterIcon className="sidebar_twitterIcon" />
@@ -69,10 +75,12 @@ export const Sidebar = ({ handleLogout, user }) => {
         Tweet
       </Button>
       <div className="Profile_info">
-        <Avatar src="https:/cdn.pixabay.com/photo/2016/08/08/09/1/avatar-1577909_960_720.png" />
+        <Avatar src={userProfilePic} />
         <div className="user_info">
-          <h4>Vikash Nautiyal</h4>
-          <h5>@vikash</h5>
+          <h4>
+            {loggedInUser[0]?.name ? loggedInUser[0]?.name : user[0]?.displayName}
+          </h4>
+          <h5>{result}</h5>
         </div>
         <IconButton
           size="small"
@@ -95,8 +103,12 @@ export const Sidebar = ({ handleLogout, user }) => {
             <Avatar src="https:/cdn.pixabay.com/photo/2016/08/08/09/1/avatar-1577909_960_720.png" />
             <div className="user_info subUser_info">
               <div>
-                <h4>Vikash Nautiyal</h4>
-                <h5>@vikash</h5>
+                <h4>
+                  {loggedInUser[0]?.name
+                    ? loggedInUser[0]?.name
+                    : user[0]?.displayName}
+                </h4>
+                <h5>{result}</h5>
               </div>
               <ListItemIcon className="done_icon">
                 <DoneIcon />

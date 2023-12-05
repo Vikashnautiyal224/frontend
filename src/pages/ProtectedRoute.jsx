@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import PageLoading from "./pageLoading";
 
  const ProtectedRoute = ({ children }) => {
-  const [user, isloading ] = useAuthState(auth);
+  const [ user, isloading ] = useAuthState(auth);
 
   if (isloading) {
     return <PageLoading/>
@@ -17,4 +17,4 @@ import PageLoading from "./pageLoading";
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedRoute; 
