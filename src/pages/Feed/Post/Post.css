@@ -1,8 +1,8 @@
 .post {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   border-bottom: 1px solid var(--twitter-background);
-  padding-bottom: 10px;
+  padding-bottom: 9px;
 }
 
 .post__body {
@@ -33,6 +33,7 @@
 .post__headerText>h3{
     font-size: 15px;
     margin-bottom: 5px;
+    margin-top: 1px;
 
 }
 .post__headerSpecial{

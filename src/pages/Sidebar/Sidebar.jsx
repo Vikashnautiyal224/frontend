@@ -100,7 +100,7 @@ export const Sidebar = ({ handleLogout, user }) => {
           onClose={handleClose}
         >
           <MenuItem className="Profile_info">
-            <Avatar src="https:/cdn.pixabay.com/photo/2016/08/08/09/1/avatar-1577909_960_720.png" />
+          <Avatar src={userProfilePic} />
             <div className="user_info subUser_info">
               <div>
                 <h4>
@@ -117,7 +117,9 @@ export const Sidebar = ({ handleLogout, user }) => {
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>Add an existing account</MenuItem>
-          <MenuItem onClick={handleLogout}>Log out @vikash</MenuItem>
+          <MenuItem onClick={handleLogout}>Log out @{loggedInUser[0]?.name
+                    ? loggedInUser[0]?.name
+                    : user[0]?.displayName}</MenuItem>
         </Menu>
       </div>
     </div>
