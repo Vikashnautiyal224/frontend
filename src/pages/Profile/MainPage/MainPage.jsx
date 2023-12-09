@@ -11,6 +11,8 @@ import { Post } from "../../Feed/Post/Post";
 import axios from "axios";
 import { EditProfile } from "../EditProfile/EditProfile";
 
+
+
 export const MainPage = ({ user }) => {
   const navigate = useNavigate();
   const [loggedInUser] = useLoggedInUser();
@@ -153,7 +155,7 @@ export const MainPage = ({ user }) => {
                     </h3>
                     <p className="usernameSection">@{username}</p>
                   </div>
-                  <EditProfile/>
+                  <EditProfile  user={user} loggedInUser={loggedInUser}/> 
                   </div>
                   <div className="infoContainer">
                     {loggedInUser[0]?.bio ? loggedInUser[0]?.bio : ""}
