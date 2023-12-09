@@ -64,7 +64,7 @@ function EditChild({ dob, setDob }) {
   );
 }
 
-export const EditProfile = (user, loggedInUser) => {
+export const EditProfile = ({user, loggedInUser}) => {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState("");
   const [bio, setBio] = React.useState("");
@@ -81,11 +81,13 @@ export const EditProfile = (user, loggedInUser) => {
       dob,
     } 
     if (editedInfo){
+       
 
     await  axios.patch(`http://localhost:5000/userUpdates/${user?.email}`, editedInfo )
+    setOpen(false);
     }
     
-    setOpen(false);
+   
   };
 
   return (
